@@ -12,7 +12,7 @@ RSpec.describe Idea, type: :model do
     end
 
     it 'description consegue ser preenchido?' do
-      @idea.description = ''
+      @idea.description = 'manter a estrutura consagrada'
       expect(@idea.description).to eq('manter a estrutura consagrada')
     end
 
