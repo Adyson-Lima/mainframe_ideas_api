@@ -1,6 +1,6 @@
 class Api::V1::IdeasController < ApplicationController
 
-  before_action :set_idea, only: %i[show] #show update destroy
+  before_action :set_idea, only: %i[show update] #show update destroy
 
   def index
     @ideas = Idea.all 
@@ -15,6 +15,14 @@ class Api::V1::IdeasController < ApplicationController
     @idea = Idea.new(idea_params)
     if @idea.save
       render json: @idea, status: :created, location: api_v1_idea_url(@idea)
+    else
+      render json: @idea.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @idea.update(idea_params)
+      render json: @idea
     else
       render json: @idea.errors, status: :unprocessable_entity
     end
