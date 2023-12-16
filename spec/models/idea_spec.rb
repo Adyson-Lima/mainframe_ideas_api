@@ -21,8 +21,8 @@ RSpec.describe Idea, type: :model do
   describe 'Testes de validacao do model Idea' do
 
     it 'idea valido com campos obrigatorios preenchidos?' do
-      @idea.name = ''
-      @idea.description = ''
+      @idea.name = 'JCL'
+      @idea.description = 'linguagem para controlar jobs'
       expect(@idea).to be_valid
     end
 
