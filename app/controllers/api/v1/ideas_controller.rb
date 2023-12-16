@@ -1,10 +1,14 @@
 class Api::V1::IdeasController < ApplicationController
 
-  #before_action :set_idea, only: %i[] #show update destroy
+  before_action :set_idea, only: %i[show] #show update destroy
 
   def index
     @ideas = Idea.all 
     render json: @ideas
+  end
+
+  def show
+    render json: @idea
   end
 
 private
