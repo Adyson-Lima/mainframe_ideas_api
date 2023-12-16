@@ -11,6 +11,15 @@ class Api::V1::IdeasController < ApplicationController
     render json: @idea
   end
 
+  def create
+    @idea = Idea.new(idea_params)
+    if @idea.save
+      render json: @idea, status: :created, location: api_v1_idea_url(@idea)
+    else
+      render json: @idea.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_idea
@@ -18,7 +27,7 @@ def set_idea
 end
 
 def idea_params
-  params.require(:idea).permit(:name, description)
+  params.require(:idea).permit(:name, :description)
 end
 
 end
