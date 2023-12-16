@@ -37,4 +37,13 @@ RSpec.describe Api::V1::IdeasController, type: :controller do
     end
   end
 
+  describe 'DELETE /api/v1/ideas/id' do
+    it 'Consegue excluir um idea e retornar status 204?' do
+      idea = Idea.last
+      delete :destroy, params: {id: idea.id}
+      expect(Idea.all).not_to include(idea)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
