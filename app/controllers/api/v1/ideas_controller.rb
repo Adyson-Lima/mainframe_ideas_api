@@ -1,6 +1,6 @@
 class Api::V1::IdeasController < ApplicationController
 
-  before_action :set_idea, only: %i[show update] #show update destroy
+  before_action :set_idea, only: %i[show update destroy] #show update destroy
 
   def index
     @ideas = Idea.all 
@@ -26,6 +26,10 @@ class Api::V1::IdeasController < ApplicationController
     else
       render json: @idea.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @idea.destroy!
   end
 
 private
