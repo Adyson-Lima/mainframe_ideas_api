@@ -11,6 +11,11 @@ RSpec.describe Idea, type: :model do
       expect(@idea.name).to eq('uso do cobol')
     end
 
+    it 'description consegue ser preenchido?' do
+      @idea.description = ''
+      expect(@idea.description).to eq('manter a estrutura consagrada')
+    end
+
   end
 
 end
