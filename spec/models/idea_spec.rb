@@ -26,6 +26,11 @@ RSpec.describe Idea, type: :model do
       expect(@idea).to be_valid
     end
 
+    it 'idea invalido com campos obrigatorios não preenchidos?' do
+      idea = Idea.new
+      expect(idea).to be_valid
+    end
+
   end
 
 end
